@@ -35,3 +35,25 @@ pub fn iterative(n: u64) -> BigInt {
     }
     u
 }
+
+pub fn logarithmic(n: u64) -> BigInt {
+    if n == 0 {
+        BigInt::from(0)
+    } else if n == 1 {
+        BigInt::from(1)
+    } else if n % 2 == 0 {
+        // n = 2k
+        // F_n = (2 × F_{k-1} + F_k) × F_k
+        let k = n / 2;
+        let f_k = logarithmic(k);
+        let f_km1 = logarithmic(k - 1);
+        (2 * f_km1 + &f_k) * f_k
+    } else {
+        // n = 2k + 1
+        // F_n = F_k² + F_{k+1}^2
+        let k = n / 2;
+        let f_k = logarithmic(k);
+        let f_km1 = logarithmic(k + 1);
+        f_k.pow(2) + f_km1.pow(2)
+    }
+}
