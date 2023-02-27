@@ -17,3 +17,12 @@ pub fn memoized(n: u64) -> BigInt {
         n => memoized(n - 1) + memoized(n - 2),
     }
 }
+
+pub fn dynamic_programming(n: u64) -> BigInt {
+    let n = n as usize;
+    let mut v = vec![BigInt::from(0), BigInt::from(1)];
+    for i in 2..=n {
+        v.push(&v[i - 2] + &v[i - 1]);
+    }
+    std::mem::take(&mut v[n])
+}
