@@ -1,4 +1,5 @@
 use fibo::{dynamic_programming, iterative, logarithmic, memoized, naive};
+use fibo::{dynamic_programming_mod, iterative_mod, logarithmic_mod, memoized_mod, naive_mod};
 
 use num_bigint::BigInt;
 
@@ -13,6 +14,19 @@ fn test_naive() {
     assert_eq!(naive(6), BigInt::from(8));
     assert_eq!(naive(7), BigInt::from(13));
     assert_eq!(naive(30), BigInt::from(832040));
+}
+
+#[test]
+fn test_naive_mod() {
+    assert_eq!(naive_mod(0, 10_000), 0);
+    assert_eq!(naive_mod(1, 10_000), 1);
+    assert_eq!(naive_mod(2, 10_000), 1);
+    assert_eq!(naive_mod(3, 10_000), 2);
+    assert_eq!(naive_mod(4, 10_000), 3);
+    assert_eq!(naive_mod(5, 10_000), 5);
+    assert_eq!(naive_mod(6, 10_000), 8);
+    assert_eq!(naive_mod(7, 10_000), 13);
+    assert_eq!(naive_mod(30, 10_000), 2040);
 }
 
 #[test]
@@ -37,6 +51,21 @@ fn test_memoized() {
         .unwrap(),
     );
     assert_eq!(memoized(10_000) % 1_000_000, BigInt::from(366875));
+}
+
+#[test]
+fn test_memoized_mod() {
+    assert_eq!(memoized_mod(0, 10_000), 0);
+    assert_eq!(memoized_mod(1, 10_000), 1);
+    assert_eq!(memoized_mod(2, 10_000), 1);
+    assert_eq!(memoized_mod(3, 10_000), 2);
+    assert_eq!(memoized_mod(4, 10_000), 3);
+    assert_eq!(memoized_mod(5, 10_000), 5);
+    assert_eq!(memoized_mod(6, 10_000), 8);
+    assert_eq!(memoized_mod(7, 10_000), 13);
+    assert_eq!(memoized_mod(30, 10_000), 2040);
+    assert_eq!(memoized_mod(1000, 1_000_000), 228875);
+    assert_eq!(memoized_mod(10_000, 1_000_000), 366875);
 }
 
 #[test]
@@ -67,6 +96,21 @@ fn test_dynamic_programming() {
 }
 
 #[test]
+fn test_dynamic_programming_mod() {
+    assert_eq!(dynamic_programming_mod(0, 10_000), 0);
+    assert_eq!(dynamic_programming_mod(1, 10_000), 1);
+    assert_eq!(dynamic_programming_mod(2, 10_000), 1);
+    assert_eq!(dynamic_programming_mod(3, 10_000), 2);
+    assert_eq!(dynamic_programming_mod(4, 10_000), 3);
+    assert_eq!(dynamic_programming_mod(5, 10_000), 5);
+    assert_eq!(dynamic_programming_mod(6, 10_000), 8);
+    assert_eq!(dynamic_programming_mod(7, 10_000), 13);
+    assert_eq!(dynamic_programming_mod(30, 10_000), 2040);
+    assert_eq!(dynamic_programming_mod(1000, 1_000_000), 228875);
+    assert_eq!(dynamic_programming_mod(1_000_000, 1_000_000), 546875);
+}
+
+#[test]
 fn test_iterative() {
     assert_eq!(iterative(0), BigInt::from(0));
     assert_eq!(iterative(1), BigInt::from(1));
@@ -91,6 +135,21 @@ fn test_iterative() {
 }
 
 #[test]
+fn test_iterative_mod() {
+    assert_eq!(iterative_mod(0, 10_000), 0);
+    assert_eq!(iterative_mod(1, 10_000), 1);
+    assert_eq!(iterative_mod(2, 10_000), 1);
+    assert_eq!(iterative_mod(3, 10_000), 2);
+    assert_eq!(iterative_mod(4, 10_000), 3);
+    assert_eq!(iterative_mod(5, 10_000), 5);
+    assert_eq!(iterative_mod(6, 10_000), 8);
+    assert_eq!(iterative_mod(7, 10_000), 13);
+    assert_eq!(iterative_mod(30, 10_000), 2040);
+    assert_eq!(iterative_mod(1000, 1_000_000), 228875);
+    assert_eq!(iterative_mod(100_000_000, 1_000_000), 546875);
+}
+
+#[test]
 fn test_logarithmic() {
     assert_eq!(logarithmic(0), BigInt::from(0));
     assert_eq!(logarithmic(1), BigInt::from(1));
@@ -112,4 +171,19 @@ fn test_logarithmic() {
         .unwrap(),
     );
     assert_eq!(logarithmic(10_000_000) % 1_000_000, BigInt::from(546875));
+}
+
+#[test]
+fn test_logarithmic_mod() {
+    assert_eq!(logarithmic_mod(0, 10_000), 0);
+    assert_eq!(logarithmic_mod(1, 10_000), 1);
+    assert_eq!(logarithmic_mod(2, 10_000), 1);
+    assert_eq!(logarithmic_mod(3, 10_000), 2);
+    assert_eq!(logarithmic_mod(4, 10_000), 3);
+    assert_eq!(logarithmic_mod(5, 10_000), 5);
+    assert_eq!(logarithmic_mod(6, 10_000), 8);
+    assert_eq!(logarithmic_mod(7, 10_000), 13);
+    assert_eq!(logarithmic_mod(30, 10_000), 2040);
+    assert_eq!(logarithmic_mod(1000, 1_000_000), 228875);
+    assert_eq!(logarithmic_mod(1_000_000_000, 1_000_000), 546875);
 }
