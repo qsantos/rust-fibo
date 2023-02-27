@@ -26,3 +26,12 @@ pub fn dynamic_programming(n: u64) -> BigInt {
     }
     std::mem::take(&mut v[n])
 }
+
+pub fn iterative(n: u64) -> BigInt {
+    let mut u = BigInt::from(0);
+    let mut v = BigInt::from(1);
+    for _ in 0..n {
+        (u, v) = (&u + v, u);
+    }
+    u
+}
